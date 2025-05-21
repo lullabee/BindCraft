@@ -1,0 +1,9 @@
+{
+    "design_path": "./cas12a_small/",
+    "binder_name": "cas12a_small",
+    "starting_pdb": "./cas12a_pdb/cas12a_small.pdb",
+    "chains": "A",
+    "target_hotspot_residues": "307,311",
+    "lengths": [50, 100],
+    "number_of_final_designs": 5
+}
