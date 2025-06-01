@@ -20,6 +20,7 @@ wheels/
 *.egg-info/
 .installed.cfg
 *.egg
+params/
 
 # Virtual Environment
 venv/
@@ -34,6 +35,8 @@ ENV/
 
 # BindCraft specific
 cas12a_small/
+cas12a_med/
+
 *.log
 nohup.out
 *.pdb
@@ -42,8 +45,3 @@ nohup.out
 *.html
 *.png
 *.txt
-
-# Keep settings files
-!settings_target/*.json
-!settings_filters/*.json
-!settings_advanced/*.json 

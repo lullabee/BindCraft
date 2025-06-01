@@ -3,43 +3,41 @@
 ####################################
 ### Import dependencies
 from functions import *
-from google.cloud import storage
-import os
 
 ### GCS bucket confirguration
-BUCKET_NAME = 'atelasbio'
-gcs_client = storage.Client()
-bucket = gcs_client.bucket(BUCKET_NAME)
+# BUCKET_NAME = 'atelasbio'
+# gcs_client = storage.Client()
+# bucket = gcs_client.bucket(BUCKET_NAME)
 
-def upload_to_gcs(local_path, gcs_path):
-    blob = bucket.blob(gcs_path)
-    blob.upload_from_filename(local_path)
-    print(f"Uploaded {local_path} to gs://{BUCKET_NAME}/{gcs_path}")
+# def upload_to_gcs(local_path, gcs_path):
+#     blob = bucket.blob(gcs_path)
+#     blob.upload_from_filename(local_path)
+#     print(f"Uploaded {local_path} to gs://{BUCKET_NAME}/{gcs_path}")
 
-def upload_directory_to_gcs(local_dir, gcs_prefix):
-    """Upload an entire directory to GCS, maintaining the directory structure."""
-    if not os.path.exists(local_dir):
-        print(f"Directory {local_dir} does not exist, skipping upload")
-        return
+# def upload_directory_to_gcs(local_dir, gcs_prefix):
+#     """Upload an entire directory to GCS, maintaining the directory structure."""
+#     if not os.path.exists(local_dir):
+#         print(f"Directory {local_dir} does not exist, skipping upload")
+#         return
         
-    for root, dirs, files in os.walk(local_dir):
-        for file in files:
-            local_path = os.path.join(root, file)
-            # Get the relative path from the local_dir
-            rel_path = os.path.relpath(local_path, local_dir)
-            # Create the GCS path by joining the prefix and relative path
-            gcs_path = os.path.join(gcs_prefix, rel_path)
-            try:
-                upload_to_gcs(local_path, gcs_path)
-            except Exception as e:
-                print(f"Error uploading {local_path}: {str(e)}")
+#     for root, dirs, files in os.walk(local_dir):
+#         for file in files:
+#             local_path = os.path.join(root, file)
+#             # Get the relative path from the local_dir
+#             rel_path = os.path.relpath(local_path, local_dir)
+#             # Create the GCS path by joining the prefix and relative path
+#             gcs_path = os.path.join(gcs_prefix, rel_path)
+#             try:
+#                 upload_to_gcs(local_path, gcs_path)
+#             except Exception as e:
+#                 print(f"Error uploading {local_path}: {str(e)}")
 
 # === Test upload ===
 test_file = "/tmp/test_upload.txt"
 with open(test_file, "w") as f:
     f.write("Test upload from BindCraft script.")
 
-upload_to_gcs(test_file, "debug/test_upload.txt")
+# upload_to_gcs(test_file, "debug/test_upload.txt")
 
 # Check if JAX-capable GPU is available, otherwise exit
 check_jax_gpu()
@@ -91,16 +89,16 @@ create_dataframe(final_csv, final_labels)
 generate_filter_pass_csv(failure_csv, args.filters)
 
 # Upload CSV files
-upload_to_gcs(trajectory_csv, f'results/{os.path.basename(trajectory_csv)}')
-upload_to_gcs(mpnn_csv, f'results/{os.path.basename(mpnn_csv)}')
-upload_to_gcs(final_csv, f'results/{os.path.basename(final_csv)}')
-upload_to_gcs(failure_csv, f'results/{os.path.basename(failure_csv)}')
+# upload_to_gcs(trajectory_csv, f'results/{os.path.basename(trajectory_csv)}')
+# upload_to_gcs(mpnn_csv, f'results/{os.path.basename(mpnn_csv)}')
+# upload_to_gcs(final_csv, f'results/{os.path.basename(final_csv)}')
+# upload_to_gcs(failure_csv, f'results/{os.path.basename(failure_csv)}')
 
 # Upload full output directories
 design_name = os.path.basename(target_settings["design_path"])
-upload_directory_to_gcs(design_paths["Accepted"], f'results/{design_name}/Accepted')
-upload_directory_to_gcs(design_paths["Trajectory"], f'results/{design_name}/Trajectory')
-upload_directory_to_gcs(design_paths["MPNN"], f'results/{design_name}/MPNN')
+# upload_directory_to_gcs(design_paths["Accepted"], f'results/{design_name}/Accepted')
+# upload_directory_to_gcs(design_paths["Trajectory"], f'results/{design_name}/Trajectory')
+# upload_directory_to_gcs(design_paths["MPNN"], f'results/{design_name}/MPNN')
 
 ####################################
 ####################################
@@ -211,7 +209,7 @@ while True:
             insert_data(trajectory_csv, trajectory_data)
             
             # Upload updated trajectory CSV after each trajectory
-            upload_to_gcs(trajectory_csv, f'results/{os.path.basename(trajectory_csv)}')
+            # upload_to_gcs(trajectory_csv, f'results/{os.path.basename(trajectory_csv)}')
             
             if advanced_settings["enable_mpnn"]:
                 # initialise MPNN counters
@@ -411,9 +409,6 @@ while True:
                         # insert data into csv
                         insert_data(mpnn_csv, mpnn_data)
                         
-                        # Upload updated MPNN CSV after each MPNN design
-                        upload_to_gcs(mpnn_csv, f'results/{os.path.basename(mpnn_csv)}')
-
                         # find best model number by pLDDT
                         plddt_values = {i: mpnn_data[i] for i in range(11, 15) if mpnn_data[i] is not None}
 
@@ -438,9 +433,6 @@ while True:
                             final_data = [''] + mpnn_data
                             insert_data(final_csv, final_data)
                             
-                            # Upload updated final CSV after each accepted design
-                            upload_to_gcs(final_csv, f'results/{os.path.basename(final_csv)}')
-
                             # copy animation from accepted trajectory
                             accepted_animation = os.path.join(design_paths["Accepted/Animation"], f"{design_name}.html")
                             if not os.path.exists(accepted_animation):
@@ -455,13 +447,6 @@ while True:
                                 if not os.path.exists(target_plot):
                                     shutil.copy(source_plot, target_plot)
                             
-                            # Upload accepted design files
-                            upload_to_gcs(best_model_pdb, f'results/{design_name}/Accepted/{os.path.basename(best_model_pdb)}')
-                            if advanced_settings["save_design_animations"]:
-                                upload_to_gcs(accepted_animation, f'results/{design_name}/Accepted/Animation/{os.path.basename(accepted_animation)}')
-                            for accepted_plot in plots_to_copy:
-                                upload_to_gcs(target_plot, f'results/{design_name}/Accepted/Plots/{os.path.basename(target_plot)}')
-
                         else:
                             print(f"Unmet filter conditions for {mpnn_design_name}")
                             failure_df = pd.read_csv(failure_csv)
@@ -480,7 +465,6 @@ while True:
 
                             failure_df.to_csv(failure_csv, index=False)
                             # Upload updated failure CSV after each rejection
-                            upload_to_gcs(failure_csv, f'results/{os.path.basename(failure_csv)}')
                             shutil.copy(best_model_pdb, design_paths["Rejected"])
                         
                         # increase MPNN design number

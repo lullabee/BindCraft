@@ -1,0 +1,9 @@
+{
+    "design_path": "./cas12a_med/",
+    "binder_name": "cas12a_med",
+    "starting_pdb": "./cas12a_pdb/cas12a_medium.pdb",
+    "chains": "A",
+    "target_hotspot_residues": "306",
+    "lengths": [75, 150],
+    "number_of_final_designs": 10
+}

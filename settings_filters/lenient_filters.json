@@ -1,0 +1,202 @@
+{
+    "MPNN_score": {
+        "threshold": null,
+        "higher": false
+    },
+    "MPNN_seq_recovery": {
+        "threshold": null,
+        "higher": false
+    },
+    "Average_pLDDT": {
+        "threshold": 0.7,
+        "higher": true
+    },
+    "1_pLDDT": {
+        "threshold": 0.7,
+        "higher": true
+    },
+    "2_pLDDT": {
+        "threshold": 0.7,
+        "higher": true
+    },
+    "3_pLDDT": {
+        "threshold": null,
+        "higher": true
+    },
+    "4_pLDDT": {
+        "threshold": null,
+        "higher": true
+    },
+    "5_pLDDT": {
+        "threshold": null,
+        "higher": true
+    },
+    "Average_pTM": {
+        "threshold": 0.45,
+        "higher": true
+    },
+    "1_pTM": {
+        "threshold": 0.45,
+        "higher": true
+    },
+    "2_pTM": {
+        "threshold": 0.45,
+        "higher": true
+    },
+    "3_pTM": {
+        "threshold": null,
+        "higher": true
+    },
+    "4_pTM": {
+        "threshold": null,
+        "higher": true
+    },
+    "5_pTM": {
+        "threshold": null,
+        "higher": true
+    },
+    "Average_i_pTM": {
+        "threshold": 0.4,
+        "higher": true
+    },
+    "1_i_pTM": {
+        "threshold": 0.4,
+        "higher": true
+    },
+    "2_i_pTM": {
+        "threshold": 0.4,
+        "higher": true
+    },
+    "3_i_pTM": {
+        "threshold": null,
+        "higher": true
+    },
+    "4_i_pTM": {
+        "threshold": null,
+        "higher": true
+    },
+    "5_i_pTM": {
+        "threshold": null,
+        "higher": true
+    },
+    "Average_pAE": {
+        "threshold": null,
+        "higher": false
+    },
+    "1_pAE": {
+        "threshold": null,
+        "higher": false
+    },
+    "2_pAE": {
+        "threshold": null,
+        "higher": false
+    },
+    "3_pAE": {
+        "threshold": null,
+        "higher": false
+    },
+    "4_pAE": {
+        "threshold": null,
+        "higher": false
+    },
+    "5_pAE": {
+        "threshold": null,
+        "higher": false
+    },
+    "Average_i_pAE": {
+        "threshold": 0.45,
+        "higher": false
+    },
+    "1_i_pAE": {
+        "threshold": 0.45,
+        "higher": false
+    },
+    "2_i_pAE": {
+        "threshold": 0.45,
+        "higher": false
+    },
+    "3_i_pAE": {
+        "threshold": null,
+        "higher": false
+    },
+    "4_i_pAE": {
+        "threshold": null,
+        "higher": false
+    },
+    "5_i_pAE": {
+        "threshold": null,
+        "higher": false
+    },
+    "Average_i_pLDDT": {
+        "threshold": null,
+        "higher": true
+    },
+    "1_i_pLDDT": {
+        "threshold": null,
+        "higher": true
+    },
+    "2_i_pLDDT": {
+        "threshold": null,
+        "higher": true
+    },
+    "3_i_pLDDT": {
+        "threshold": null,
+        "higher": true
+    },
+    "4_i_pLDDT": {
+        "threshold": null,
+        "higher": true
+    },
+    "5_i_pLDDT": {
+        "threshold": null,
+        "higher": true
+    },
+    "Average_ss_pLDDT": {
+        "threshold": null,
+        "higher": true
+    },
+    "1_ss_pLDDT": {
+        "threshold": null,
+        "higher": true
+    },
+    "2_ss_pLDDT": {
+        "threshold": null,
+        "higher": true
+    },
+    "3_ss_pLDDT": {
+        "threshold": null,
+        "higher": true
+    },
+    "4_ss_pLDDT": {
+        "threshold": null,
+        "higher": true
+    },
+    "5_ss_pLDDT": {
+        "threshold": null,
+        "higher": true
+    },
+    "Average_Unrelaxed_Clashes": {
+        "threshold": null,
+        "higher": false
+    },
+    "1_Unrelaxed_Clashes": {
+        "threshold": null,
+        "higher": false
+    },
+    "2_Unrelaxed_Clashes": {
+        "threshold": null,
+        "higher": false
+    },
+    "3_Unrelaxed_Clashes": {
+        "threshold": null,
+        "higher": false
+    },
+    "4_Unrelaxed_Clashes": {
+        "threshold": null,
+        "higher": false
+    },
+    "5_Unrelaxed_Clashes": {
+        "threshold": null,
+        "higher": false
+    }
+} 

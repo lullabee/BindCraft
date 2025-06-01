@@ -50,7 +50,7 @@ Alternatively, if your machine does not support SLURM, you can run the code dire
 ```
 conda activate BindCraft
 cd /path/to/bindcraft/folder/
-python -u ./bindcraft.py --settings './settings_target/PDL1.json' --filters './settings_filters/default_filters.json' --advanced './settings_advanced/default_4stage_multimer.json'
+python -u ./bindcraft.py --settings './settings_target/cas12a_small.json' --filters './settings_filters/default_filters.json' --advanced './settings_advanced/default_4stage_multimer.json'
 ```
 
 **We recommend to generate at least a 100 final designs passing all filters, then order the top 5-20 for experimental characterisation.** If high affinity binders are required, it is better to screen more, as the ipTM metric used for ranking is not a good predictor for affinity, but has been shown to be a good binary predictor of binding. 
